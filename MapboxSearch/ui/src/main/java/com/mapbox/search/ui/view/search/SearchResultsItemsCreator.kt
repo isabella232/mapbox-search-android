@@ -1,7 +1,7 @@
 package com.mapbox.search.ui.view.search
 
 import android.content.Context
-import com.mapbox.android.core.location.LocationEngine
+import com.mapbox.common.location.compat.LocationEngine
 import com.mapbox.search.ResponseInfo
 import com.mapbox.search.common.SearchCommonAsyncOperationTask
 import com.mapbox.search.common.extension.lastKnownLocationOrNull

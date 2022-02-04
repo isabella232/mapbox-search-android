@@ -2,9 +2,9 @@ package com.mapbox.search.common.extension
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.mapbox.android.core.location.LocationEngine
-import com.mapbox.android.core.location.LocationEngineCallback
-import com.mapbox.android.core.location.LocationEngineResult
+import com.mapbox.common.location.compat.LocationEngine
+import com.mapbox.common.location.compat.LocationEngineCallback
+import com.mapbox.common.location.compat.LocationEngineResult
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.geojson.Point
 import com.mapbox.search.common.SearchCommonAsyncOperationTask
@@ -21,8 +21,8 @@ fun LocationEngine.lastKnownLocationOrNull(context: Context, callback: (Point?) 
 
     val task = SearchCommonAsyncOperationTaskImpl()
     val locationCallback = object : LocationEngineCallback<LocationEngineResult> {
-        override fun onSuccess(result: LocationEngineResult?) {
-            val location = (result?.locations?.lastOrNull() ?: result?.lastLocation)?.let { location ->
+        override fun onSuccess(result: LocationEngineResult) {
+            val location = (result.locations?.lastOrNull() ?: result.lastLocation)?.let { location ->
                 Point.fromLngLat(location.longitude, location.latitude)
             }
             if (!task.isCancelled) {
@@ -31,7 +31,7 @@ fun LocationEngine.lastKnownLocationOrNull(context: Context, callback: (Point?) 
             }
         }
 
-        override fun onFailure(e: Exception) {
+        override fun onFailure(exception: Exception) {
             if (!task.isCancelled) {
                 callback(null)
                 task.onComplete()

@@ -1,13 +1,13 @@
 package com.mapbox.search
 
 import android.app.Application
-import com.mapbox.android.core.location.LocationEngine
-import com.mapbox.android.core.location.LocationEngineProvider
 import com.mapbox.annotation.module.MapboxModuleType
 import com.mapbox.bindgen.Value
 import com.mapbox.common.TileDataDomain
 import com.mapbox.common.TileStore
 import com.mapbox.common.TileStoreOptions
+import com.mapbox.common.location.compat.LocationEngine
+import com.mapbox.common.location.compat.LocationEngineProvider
 import com.mapbox.common.module.LibraryLoader
 import com.mapbox.common.module.provider.MapboxModuleProvider
 import com.mapbox.common.module.provider.ModuleProviderArgument

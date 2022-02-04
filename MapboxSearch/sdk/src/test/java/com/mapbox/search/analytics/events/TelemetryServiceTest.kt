@@ -2,10 +2,10 @@ package com.mapbox.search.analytics.events
 
 import android.content.Context
 import android.location.Location
-import com.mapbox.android.core.location.LocationEngine
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.android.telemetry.MapboxCrashReporter
 import com.mapbox.android.telemetry.MapboxTelemetry
+import com.mapbox.common.location.compat.LocationEngine
 import com.mapbox.geojson.Point
 import com.mapbox.search.BuildConfig
 import com.mapbox.search.ResponseInfo
@@ -30,7 +30,6 @@ import io.mockk.unmockkStatic
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.TestFactory
 import java.lang.IllegalStateException
 
 internal class TelemetryServiceTest {

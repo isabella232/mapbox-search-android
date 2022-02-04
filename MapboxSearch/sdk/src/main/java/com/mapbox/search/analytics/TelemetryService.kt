@@ -2,9 +2,9 @@ package com.mapbox.search.analytics
 
 import android.content.Context
 import com.google.gson.Gson
-import com.mapbox.android.core.location.LocationEngine
 import com.mapbox.android.telemetry.MapboxCrashReporter
 import com.mapbox.android.telemetry.MapboxTelemetry
+import com.mapbox.common.location.compat.LocationEngine
 import com.mapbox.geojson.Point
 import com.mapbox.search.ApiType
 import com.mapbox.search.ResponseInfo

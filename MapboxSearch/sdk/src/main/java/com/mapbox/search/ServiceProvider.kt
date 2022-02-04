@@ -1,6 +1,6 @@
 package com.mapbox.search
 
-import com.mapbox.android.core.location.LocationEngine
+import com.mapbox.common.location.compat.LocationEngine
 import com.mapbox.search.analytics.AnalyticsService
 import com.mapbox.search.analytics.ErrorsReporter
 import com.mapbox.search.analytics.InternalAnalyticsService

@@ -3,11 +3,11 @@ package com.mapbox.search.location
 import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Looper
-import com.mapbox.android.core.location.LocationEngine
-import com.mapbox.android.core.location.LocationEngineCallback
-import com.mapbox.android.core.location.LocationEngineRequest
-import com.mapbox.android.core.location.LocationEngineResult
 import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.common.location.compat.LocationEngine
+import com.mapbox.common.location.compat.LocationEngineCallback
+import com.mapbox.common.location.compat.LocationEngineRequest
+import com.mapbox.common.location.compat.LocationEngineResult
 import com.mapbox.geojson.Point
 import com.mapbox.search.common.extension.toPoint
 import com.mapbox.search.common.logger.loge
@@ -26,17 +26,17 @@ internal class LocationEngineAdapter(
     private var lastLocationInfo = LocationInfo(null, 0)
 
     private val locationEngineCallback = object : LocationEngineCallback<LocationEngineResult> {
-        override fun onSuccess(result: LocationEngineResult?) {
+        override fun onSuccess(result: LocationEngineResult) {
             // LocationEngineResult.locations are ordered from oldest to newest
-            val location = result?.locations?.lastOrNull() ?: result?.lastLocation
+            val location = result.locations?.lastOrNull() ?: result.lastLocation
             if (location != null) {
                 lastLocationInfo = LocationInfo(location.toPoint(), System.currentTimeMillis())
             }
             stopLocationListener()
         }
 
-        override fun onFailure(e: Exception) {
-            loge(e, "Can't access location")
+        override fun onFailure(exception: Exception) {
+            loge(exception, "Can't access location")
         }
     }
 

@@ -3,20 +3,20 @@ package com.mapbox.search.sample
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
-import com.mapbox.android.core.location.LocationEngineCallback
-import com.mapbox.android.core.location.LocationEngineResult
 import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.common.location.compat.LocationEngineCallback
+import com.mapbox.common.location.compat.LocationEngineResult
 import com.mapbox.geojson.Point
 import com.mapbox.search.MapboxSearchSdk
-import com.mapbox.search.ui.view.SearchBottomSheetView
 import com.mapbox.search.ui.view.category.Category
 import com.mapbox.search.ui.view.category.SearchCategoriesBottomSheetView
 import com.mapbox.search.ui.view.feedback.SearchFeedbackBottomSheetView
 import com.mapbox.search.ui.view.place.SearchPlace
 import com.mapbox.search.ui.view.place.SearchPlaceBottomSheetView
-import kotlinx.parcelize.Parcelize
-import java.util.LinkedList
+import com.mapbox.search.ui.view.SearchBottomSheetView
 import java.util.concurrent.CopyOnWriteArrayList
+import java.util.LinkedList
+import kotlinx.parcelize.Parcelize
 
 /**
  * Sample implementation of search cards navigation and coordination.
@@ -243,14 +243,14 @@ class SearchViewBottomSheetsMediator(
         }
 
         serviceProvider.locationEngine().getLastLocation(object : LocationEngineCallback<LocationEngineResult> {
-            override fun onSuccess(result: LocationEngineResult?) {
-                val location = (result?.locations?.lastOrNull() ?: result?.lastLocation)?.let { location ->
+            override fun onSuccess(result: LocationEngineResult) {
+                val location = (result.locations?.lastOrNull() ?: result.lastLocation)?.let { location ->
                     Point.fromLngLat(location.longitude, location.latitude)
                 }
                 callback(location)
             }
 
-            override fun onFailure(p0: Exception) {
+            override fun onFailure(exception: Exception) {
                 callback(null)
             }
         })

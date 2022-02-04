@@ -43,7 +43,7 @@ ext {
 
     mapbox_maps_version = "10.2.0"
     telemetry_version = '8.1.1'
-    common_sdk_version = '21.1.0-rc.1'
+    common_sdk_version = '21.1.0-beta.1-ab24d2ac9a4498a42915ee9dfe173a19899fcbf6-SNAPSHOT'
     mapbox_base_version = '0.6.0'
     mapbox_android_core_version = '5.0.0'
 
